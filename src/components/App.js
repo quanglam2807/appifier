@@ -12,6 +12,7 @@ import Spinner from './Spinner';
 import NoConnection from './NoConnection';
 import Card from './Card';
 import Settings from './Settings';
+import Advance from './Advance';
 
 class App extends React.Component {
   componentDidMount() {
@@ -100,6 +101,7 @@ class App extends React.Component {
         {this.renderList()}
         {this.renderStatus()}
         <Settings />
+        <Advance />
       </div>
     );
   }

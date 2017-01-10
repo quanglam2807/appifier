@@ -2,15 +2,18 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Menu, MenuItem, Popover, Position, Button, Classes } from '@blueprintjs/core';
 
 import { refresh } from '../actions/app';
 import { search, setSearchQuery } from '../actions/search';
 import { toggleSettingDialog } from '../actions/settings';
+import { toggleAdvanceDialog } from '../actions/advance';
 import { NONE } from '../constants/actions';
 
 const Nav = ({
   query, searchStatus,
   requestSearch, requestSetSearchQuery, requestToggleSettingDialog, requestRefresh,
+  requestToggleAdvanceDialog,
 }) => (
   <nav
     className="pt-navbar pt-fixed-top"
@@ -58,21 +61,37 @@ const Nav = ({
       </div>
     </div>
     <div className="pt-navbar-group pt-align-right">
-      <button
-        className="pt-button pt-minimal pt-icon-edit"
-        onClick={() => shell.openExternal('https://goo.gl/forms/QIFncw8dauDn61Mw1')}
-      >
-        Submit new app
-      </button>
-      <button
-        className="pt-button pt-minimal pt-icon-refresh"
+      <Button
+        iconName="refresh"
+        className={Classes.MINIMAL}
         onClick={() => requestRefresh()}
       />
       <span className="pt-navbar-divider" />
-      <button
-        className="pt-button pt-minimal pt-icon-cog"
+      <Button
+        iconName="cog"
+        className={Classes.MINIMAL}
         onClick={() => requestToggleSettingDialog()}
       />
+      <Popover
+        content={(
+          <Menu>
+            <MenuItem
+              text="Submit new app"
+              onClick={() => shell.openExternal('https://goo.gl/forms/QIFncw8dauDn61Mw1')}
+            />
+            <MenuItem
+              text="Install custom app"
+              onClick={() => requestToggleAdvanceDialog()}
+            />
+          </Menu>
+        )}
+        position={Position.BOTTOM_RIGHT}
+      >
+        <Button
+          iconName="more"
+          className={Classes.MINIMAL}
+        />
+      </Popover>
     </div>
   </nav>
 );
@@ -83,6 +102,7 @@ Nav.propTypes = {
   requestSearch: React.PropTypes.func,
   requestSetSearchQuery: React.PropTypes.func,
   requestToggleSettingDialog: React.PropTypes.func,
+  requestToggleAdvanceDialog: React.PropTypes.func,
   requestRefresh: React.PropTypes.func,
 };
 
@@ -100,6 +120,9 @@ const mapDispatchToProps = dispatch => ({
   },
   requestToggleSettingDialog: () => {
     dispatch(toggleSettingDialog());
+  },
+  requestToggleAdvanceDialog: () => {
+    dispatch(toggleAdvanceDialog());
   },
   requestRefresh: () => {
     dispatch(refresh());
