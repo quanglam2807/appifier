@@ -1,14 +1,14 @@
 import {
-  TOGGLE_SETTING_DIALOG,
+  TOGGLE_ADVANCE_DIALOG,
 } from '../constants/actions';
 
 const initialState = {
   isOpen: false,
 };
 
-const settings = (state = initialState, action) => {
+const advance = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_SETTING_DIALOG: {
+    case TOGGLE_ADVANCE_DIALOG: {
       return Object.assign({}, state, {
         isOpen: !state.isOpen,
       });
@@ -18,4 +18,4 @@ const settings = (state = initialState, action) => {
   }
 };
 
-export default settings;
+export default advance;
