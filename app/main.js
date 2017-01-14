@@ -191,6 +191,10 @@ function createWindow() {
     });
   };
 
+  const openSearchWindow = () => {
+    mainWindow.webContents.send('openSearchWindow');
+  };
+
   const getCurrentUrl = () => mainWindow.webContents.getURL();
 
   const menuOptions = {
@@ -203,11 +207,37 @@ function createWindow() {
     goForward: onGoForward,
     getCurrentUrl,
     clearBrowsingData,
+    openSearchWindow,
   };
 
   createMenu(menuOptions);
 
   if (isWebView) {
+    // injectCSS
+    const injectedCss = `
+    .electron-in-page-search-window {
+      width: 300px;
+      height: 36px;
+      background-color: white;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 100000;
+      border-left: 1px solid #000;
+      border-bottom: 1px solid #000;
+    }
+
+    .electron-in-page-search-window.search-inactive {
+      visibility: hidden;
+    }
+
+    .electron-in-page-search-window.search-active {
+      visibility: visible;
+    }
+    `;
+    mainWindow.webContents.insertCSS(injectedCss);
+
+    // Handle new window
     const webViewDomain = extractDomain(argv.url);
 
     const handleRedirect = (e, nextUrl) => {
