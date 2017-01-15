@@ -46,6 +46,10 @@ electron-builder-http@11.1.1:
   dependencies:
     fs-extra-p "^3.0.3"
 
+electron-in-page-search@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/electron-in-page-search/-/electron-in-page-search-1.2.3.tgz#c1663b15ba3e646f371d9ad278a1cce9a7a79c80"
+
 esprima@^2.6.0:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"

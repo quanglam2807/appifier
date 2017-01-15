@@ -15,7 +15,7 @@ const { Menu, shell, clipboard } = electron;
  */
 function createMenu({
   webView, appName, getCurrentUrl, goBack, goForward, zoomIn, zoomOut, appQuit,
-  clearBrowsingData,
+  clearBrowsingData, openSearchWindow,
 }) {
   let template;
   if (webView) {
@@ -24,7 +24,7 @@ function createMenu({
         label: 'File',
         submenu: [
           {
-            label: 'Clear browsing data',
+            label: 'Clear browsing data...',
             click: () => {
               clearBrowsingData();
             },
@@ -74,6 +74,13 @@ function createMenu({
             label: 'Select All',
             accelerator: 'CmdOrCtrl+A',
             role: 'selectall',
+          },
+          {
+            label: 'Find in page...',
+            accelerator: 'CmdOrCtrl+F',
+            click: () => {
+              openSearchWindow();
+            },
           },
         ],
       },

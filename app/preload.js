@@ -1,7 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-underscore-dangle */
 /* global window */
 
-const { ipcRenderer, webFrame } = require('electron');
+const { ipcRenderer, webFrame, remote } = require('electron');
+const searchInPage = require('electron-in-page-search').default;
+
 
 ipcRenderer.on('change-zoom', (event, message) => {
   webFrame.setZoomFactor(message);
@@ -27,4 +30,15 @@ const setNotificationCallback = (callback) => {
 
 setNotificationCallback((title, opt) => {
   ipcRenderer.send('notification', title, opt);
+});
+
+// find in Page
+const _setImmediate = setImmediate;
+process.once('loaded', () => {
+  global.setImmediate = _setImmediate;
+
+  const inPageSearch = searchInPage(remote.getCurrentWebContents());
+  ipcRenderer.on('openSearchWindow', () => {
+    inPageSearch.openSearchWindow();
+  });
 });
