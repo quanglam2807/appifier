@@ -9,11 +9,11 @@ builder.build({
   targets: Platform.WINDOWS.createTarget(['squirrel', 'nsis'], Arch.x64),
   devMetadata: {
     build: {
+      appId: 'com.webcatalog.app',
       win: {
         publish: ['github'],
       },
-      files: ['!plugins/darwin/**/*'],
-      appId: 'com.webcatalog.app',
+      files: ['!plugins/darwin/**/*', '!plugins/linux/**/*'],
       asar: true,
       asarUnpack: ['plugins/**'],
     },
