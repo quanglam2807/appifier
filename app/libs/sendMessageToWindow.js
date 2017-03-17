@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { BrowserWindow } = require('electron');
 
 const sendMessageToWindow = (...args) => {

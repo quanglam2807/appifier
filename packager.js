@@ -2,7 +2,6 @@
 
 const builder = require('electron-builder');
 const exec = require('child_process').exec;
-const electronVersion = require('./package.json').devDependencies.electron.substr(1);
 
 const { Platform, Arch } = builder;
 
@@ -36,7 +35,6 @@ const files = [];
 builder.build({
   targets,
   config: {
-    electronVersion,
     appId: 'com.webcatalog.app',
     files,
     asar: true,
