@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
 import auth from './auth';
+import dialogs from './dialogs';
 import home from './home';
 
 const rootReducer = combineReducers({
   auth,
+  dialogs,
   home,
 });
 
