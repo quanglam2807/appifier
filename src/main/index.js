@@ -7,7 +7,7 @@ const argv = require('yargs-parser')(process.argv.slice(1));
 
 const windowStateKeeper = require('./libs/windowStateKeeper');
 const createMenu = require('./libs/createMenu');
-
+const loadListeners = require('./libs/loadListeners');
 
 // Development mode
 const isDevelopment = argv.development === 'true';
@@ -21,6 +21,9 @@ const isShell = argv.url !== undefined && argv.id !== undefined;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+
+// load ipcMain listeners
+loadListeners();
 
 // load ipcMain events
 ipcMain.on('get-shell-info', (e) => {
@@ -110,6 +113,14 @@ const createWindow = () => {
     });
     mainWindow.loadURL(HTMLUrl);
   }
+
+  // Emitted when the close button is clicked.
+  mainWindow.on('close', () => {
+    // Dereference the window object, usually you would store windows
+    // in an array if your app supports multi windows, this is the time
+    // when you should delete the corresponding element.
+    mainWindow = null;
+  });
 };
 
 app.on('ready', createWindow);
