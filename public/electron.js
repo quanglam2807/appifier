@@ -13,8 +13,8 @@ const loadListeners = require('./listeners');
 // support for portable mode
 app.setPath('userData',
   fs.existsSync(path.join(path.dirname(process.execPath),
-  '.portable')) == true ?  path.join(path.dirname(process.execPath),
-  'userdata') : app.getPath("userData") );
+    '.portable')) === true ? path.join(path.dirname(process.execPath),
+      'userdata') : app.getPath('userData'));
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
