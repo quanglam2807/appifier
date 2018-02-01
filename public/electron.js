@@ -3,11 +3,18 @@ const argv = require('yargs-parser')(process.argv.slice(1));
 const isDev = require('electron-is-dev');
 const path = require('path');
 const windowStateKeeper = require('electron-window-state');
+const fs = require('fs');
 
 const isTesting = argv.testing === 'true'; // Spectron mode
 
 const createMenu = require('./libs/create-menu');
 const loadListeners = require('./listeners');
+
+// support for portable mode
+app.setPath('userData',
+  fs.existsSync(path.join(path.dirname(process.execPath),
+    '.portable')) === true ? path.join(path.dirname(process.execPath),
+      'userdata') : app.getPath('userData'));
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
