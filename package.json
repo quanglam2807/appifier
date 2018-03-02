@@ -6,15 +6,21 @@
   "author": "Quang Lam <quang.lam2807@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["appifier"],
+  "workspaces": [
+    "appifier",
+    "appifier-gui"
+  ],
   "scripts": {
     "lib:build": "cd appifier && yarn build",
     "lib:test": "cd appifier && yarn test",
     "lib:electron-dev": "cd appifier && yarn electron-dev",
     "lib:lint": "cd appifier && yarn lint",
-
-    "build": "yarn lib:build",
-    "test": "yarn lib:test",
-    "lint": "yarn lib:lint"
+    "gui:build": "cd appifier-gui && yarn build",
+    "gui:test": "cd appifier-gui && yarn test",
+    "gui:electron-dev": "cd appifier-gui && yarn electron-dev",
+    "gui:lint": "cd appifier-gui && yarn lint",
+    "build": "yarn lib:build && yarn gui:build",
+    "test": "yarn lib:test && yarn gui:test",
+    "lint": "yarn lib:lint && yarn gui:lint"
   }
 }
