@@ -4,6 +4,8 @@
 
 **Homepage:** https://quang.im/appifier
 
+![Demo](demo.gif)
+
 > If you follow this repo long enough, you'd wonder what the f\*ck wrong with this project and its developer: The guy just kept rewriting the app over and over again. Is he insane? How much time does he spend on this? It's just a web wrapper generator, not a rocket and he spent more than a year working on it, what!? Well, "Intellectuals solve problems, geniuses prevent them," said Albert Einstein. Sadly, the guy was neither an intellectual nor a genius. He was just a naive freshman at a liberal arts college, busying to read classical texts instead of learning about practical software engineering. He messed up. He was ambitious, passionate but then he was stupid enough not to read something like *Lean Startup*. As a result, what's supposed to happen happened :). It's a long story. Nevertheless, this paragraph pretty much sums it up.
 
 > So **is it stable now?** Maybe. The developer's now more competent. But nothing is perfect. And you should know that the guy loves experiments - stupid ones. If you want to play safe, use **[Appifier Lite](https://github.com/quanglam2807/webcatalog-lite)** or [Nativefier](https://github.com/jiahaog/nativefier) instead.
