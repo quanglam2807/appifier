@@ -1,5 +1,5 @@
 {
-  "name": "appifier-gui",
+  "name": "Appifier",
   "version": "11.0.0",
   "main": "public/electron.js",
   "scripts": {

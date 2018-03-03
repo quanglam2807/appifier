@@ -54,7 +54,6 @@ Promise.resolve()
     const opts = {
       targets,
       config: {
-        productName: 'Appifier',
         appId: 'com.appifier.app',
         asar: false,
         directories: {
