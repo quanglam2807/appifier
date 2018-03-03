@@ -12,7 +12,6 @@ import {
 } from '../../constants/updater-statuses';
 
 import {
-  STRING_WHATS_NEW,
   STRING_GO_TO_THE_WEBSITE,
   STRING_UPDATE_AVAILABLE,
 } from '../../constants/strings';
@@ -42,14 +41,7 @@ const UpdaterMessage = (props) => {
         <Button
           raised
           className={classes.updaterPaperLink}
-          onClick={() => requestOpenInBrowser('https://github.com/quanglam2807/webcatalog/blob/master/RELEASE_NOTES.md')}
-        >
-          {STRING_WHATS_NEW}
-        </Button>
-        <Button
-          raised
-          className={classes.updaterPaperLink}
-          onClick={() => requestOpenInBrowser('https://webcatalog.io')}
+          onClick={() => requestOpenInBrowser('https://quang.im/appifier')}
         >
           {STRING_GO_TO_THE_WEBSITE}
         </Button>

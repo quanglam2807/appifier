@@ -42,7 +42,7 @@ const createWindow = () => {
     height: mainWindowState.height,
     minWidth: 640,
     minHeight: 640,
-    title: 'WebCatalog',
+    title: 'Appifier',
     titleBarStyle: process.platform === 'darwin' ? 'hidden' : 'default',
     autoHideMenuBar: false,
     webPreferences: {

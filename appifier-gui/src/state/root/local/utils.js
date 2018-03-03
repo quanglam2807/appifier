@@ -45,12 +45,7 @@ export const isUpdatable = (state, id) => {
   // locally available version
   const localMoleculeVersion = getCurrentMoleculeVersion();
 
-  // latest version, retrieved from server
-  const latestMoleculeVersion = state.version.apiData ?
-    state.version.apiData.moleculeVersion : '0.0.0';
-
-  return (semver.gt(latestMoleculeVersion, currentMoleculeVersion) ||
-    semver.gt(localMoleculeVersion, currentMoleculeVersion)) && !isDeprecated(state, id);
+  return (semver.gt(localMoleculeVersion, currentMoleculeVersion)) && !isDeprecated(state, id);
 };
 
 export const getAvailableUpdateCount = (state) => {

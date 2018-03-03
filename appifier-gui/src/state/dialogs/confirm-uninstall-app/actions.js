@@ -33,7 +33,7 @@ export const save = () =>
       })
       .catch((err) => {
         dispatch(dialogConfirmUninstallAppSaveSuccess());
-        dispatch(openSnackbar(`We're sorry. WebCatalog has failed to uninstall ${app.name}.`));
+        dispatch(openSnackbar(`We're sorry. Appifier has failed to uninstall ${app.name}.`));
         // eslint-disable-next-line
         console.log(err);
       });

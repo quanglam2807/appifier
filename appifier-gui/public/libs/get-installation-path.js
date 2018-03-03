@@ -12,7 +12,7 @@ if (os.platform() === 'linux') {
       const desktopDirPath = path.join(app.getPath('home'), '.local', 'share', 'applications');
       const files = fs.readdirSync(desktopDirPath);
       files.forEach((fileName) => {
-        if (fileName.startsWith('webcatalog-')) {
+        if (fileName.startsWith('appifier-')) {
           fs.removeSync(desktopDirPath, fileName);
         }
       });
@@ -28,10 +28,10 @@ if (os.platform() === 'linux') {
 const getInstallationPath = () => {
   switch (os.platform()) {
     case 'darwin': {
-      return path.join(app.getPath('home'), 'Applications', 'WebCatalog Apps');
+      return path.join(app.getPath('home'), 'Applications', 'Appifier Apps');
     }
     case 'linux': {
-      return path.join(app.getPath('home'), '.webcatalog', 'apps');
+      return path.join(app.getPath('home'), '.appifier', 'apps');
     }
     case 'win32':
     default: {

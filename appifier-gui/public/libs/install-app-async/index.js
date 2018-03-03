@@ -4,7 +4,6 @@ const { fork } = require('child_process');
 const fs = require('fs-extra');
 
 const getInstallationPath = require('../get-installation-path');
-const { getPreference } = require('../preferences');
 
 const allAppPath = getInstallationPath();
 
@@ -12,7 +11,6 @@ const installAppAsync = appObj =>
   fs.readJson(path.join(app.getAppPath(), 'package.json'))
     .then((moleculePackageJson) => {
       const moleculeVersion = moleculePackageJson.dependencies.appifier;
-      const shareResources = getPreference('shareResources');
 
       return new Promise((resolve, reject) => {
         const {
@@ -40,8 +38,6 @@ const installAppAsync = appObj =>
           app.getPath('temp'),
           '--moleculeVersion',
           moleculeVersion,
-          '--shareResources',
-          shareResources,
         ], {
           env: {
             ELECTRON_RUN_AS_NODE: 'true',
@@ -70,7 +66,7 @@ const installAppAsync = appObj =>
               id, name,
             } = appObj;
 
-            const startMenuShortcutPath = path.join(app.getPath('home'), 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'WebCatalog Apps', `${name}.lnk`);
+            const startMenuShortcutPath = path.join(app.getPath('home'), 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Appifier Apps', `${name}.lnk`);
             const desktopShortcutPath = path.join(app.getPath('desktop'), `${name}.lnk`);
             const opts = {
               target: path.join(allAppPath, id, `${name}.exe`),

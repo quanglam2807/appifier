@@ -6,12 +6,12 @@ const { exec } = require('child_process');
 const openApp = (id, name) => {
   switch (os.platform()) {
     case 'darwin': {
-      const appPath = path.join(app.getPath('home'), 'Applications', 'WebCatalog Apps', `${name}.app`);
+      const appPath = path.join(app.getPath('home'), 'Applications', 'Appifier Apps', `${name}.app`);
       shell.openItem(appPath);
       break;
     }
     case 'linux': {
-      exec(`gtk-launch webcatalog-${id}`);
+      exec(`gtk-launch appifier-${id}`);
       break;
     }
     case 'win32':

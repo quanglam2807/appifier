@@ -46,7 +46,7 @@ const createMenu = () => {
       submenu: [
         {
           label: 'Learn More',
-          click: () => shell.openExternal('https://webcatalog.io'),
+          click: () => shell.openExternal('https://quang.im/appifier'),
         },
       ],
     },
@@ -54,34 +54,18 @@ const createMenu = () => {
 
   if (process.platform !== 'darwin') {
     template[template.length - 1].submenu.push({
-      label: 'About WebCatalog',
+      label: 'About Appifier',
       click: () => sendMessageToWindow('open-about-dialog'),
     });
   }
-
-  if (process.platform === 'linux') {
-    template[0].submenu.push({ role: 'separator' });
-    template[0].submenu.push({
-      label: 'Preferences...',
-      accelerator: 'Ctrl+P',
-      click: () => sendMessageToWindow('open-preferences-dialog'),
-    });
-  }
-
 
   if (process.platform === 'darwin') {
     template.unshift({
       label: app.getName(),
       submenu: [
         {
-          label: 'About WebCatalog',
+          label: 'About Appifier',
           click: () => sendMessageToWindow('open-about-dialog'),
-        },
-        { type: 'separator' },
-        {
-          label: 'Preferences...',
-          accelerator: 'Cmd+,',
-          click: () => sendMessageToWindow('open-preferences-dialog'),
         },
         { type: 'separator' },
         { role: 'services', submenu: [] },

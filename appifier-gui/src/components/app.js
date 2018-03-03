@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 
 import connectComponent from '../helpers/connect-component';
 
-import { getVersion } from '../state/root/version/actions';
 import { checkForUpdates } from '../state/root/updater/actions';
 
 import DialogAbout from './dialogs/about';
 import DialogConfirmUninstallApp from './dialogs/confirm-uninstall-app';
 import DialogCreateCustomApp from './dialogs/create-custom-app';
-import DialogPreferences from './dialogs/preferences';
-import DialogUpdateMainAppFirst from './dialogs/update-main-app-first';
 
 import EnhancedAppBar from './root/enhanced-app-bar';
 import EnhancedSnackBar from './root/enhanced-snackbar';
@@ -34,13 +31,10 @@ const styles = {
 class App extends React.Component {
   componentDidMount() {
     const {
-      onGetVersion,
       onCheckForUpdates,
     } = this.props;
 
     onCheckForUpdates();
-
-    onGetVersion();
   }
 
   render() {
@@ -67,8 +61,6 @@ class App extends React.Component {
         <DialogAbout />
         <DialogConfirmUninstallApp />
         <DialogCreateCustomApp />
-        <DialogPreferences />
-        <DialogUpdateMainAppFirst />
       </div>
     );
   }
@@ -77,7 +69,6 @@ class App extends React.Component {
 App.propTypes = {
   classes: PropTypes.object.isRequired,
   onCheckForUpdates: PropTypes.func.isRequired,
-  onGetVersion: PropTypes.func.isRequired,
   route: PropTypes.string.isRequired,
 };
 
@@ -87,7 +78,6 @@ const mapStateToProps = state => ({
 
 const actionCreators = {
   checkForUpdates,
-  getVersion,
 };
 
 export default connectComponent(

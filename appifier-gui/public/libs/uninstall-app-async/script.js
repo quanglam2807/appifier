@@ -17,13 +17,10 @@ const uninstallAppAsync = () => {
     case 'darwin': {
       const appPath = path.join(allAppPath, `${appName}.app`);
       p.push(fs.remove(appPath));
-
-      const altAppPath = path.join(homePath, '.webcatalog', `${appName}.app`);
-      p.push(fs.remove(altAppPath));
       break;
     }
     case 'linux': {
-      const desktopFilePath = path.join(homePath, '.local', 'share', 'applications', `webcatalog-${appId}.desktop`);
+      const desktopFilePath = path.join(homePath, '.local', 'share', 'applications', `appifier-${appId}.desktop`);
       p.push(fs.remove(desktopFilePath));
 
       const appPath = path.join(allAppPath, appId);
@@ -39,12 +36,12 @@ const uninstallAppAsync = () => {
       const desktopFilePath = path.join(desktopPath, `${appName}.lnk`);
       p.push(fs.remove(desktopFilePath));
 
-      const startMenuShortcutPath = path.join(homePath, 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'WebCatalog Apps', `${appName}.lnk`);
+      const startMenuShortcutPath = path.join(homePath, 'AppData', 'Roaming', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Appifier Apps', `${appName}.lnk`);
       p.push(fs.remove(startMenuShortcutPath));
     }
   }
 
-  const pngIconPath = path.join(homePath, '.webcatalog', 'icons', `${appId}.png`);
+  const pngIconPath = path.join(homePath, '.appifier', 'icons', `${appId}.png`);
   p.push(fs.remove(pngIconPath));
 
   return Promise.all(p);

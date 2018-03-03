@@ -14,7 +14,7 @@ Promise.resolve()
     if (process.env.NODE_ENV === 'production') {
       switch (process.platform) {
         case 'darwin': {
-          targets = Platform.MAC.createTarget();
+          targets = Platform.MAC.createTarget(['zip']);
           break;
         }
         case 'linux': {
@@ -54,10 +54,9 @@ Promise.resolve()
     const opts = {
       targets,
       config: {
-        appId: 'com.webcatalog.app',
-        // asar: true,
+        productName: 'Appifier',
+        appId: 'com.appifier.app',
         asar: false,
-        // asarUnpack,
         directories: {
           buildResources: 'build-resources',
         },
@@ -74,7 +73,7 @@ Promise.resolve()
           const resourcesAppPath = process.platform === 'darwin'
             ? path.join(
               appOutDir,
-              'WebCatalog.app',
+              'Appifier.app',
               'Contents',
               'Resources',
               'app',

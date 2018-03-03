@@ -21,7 +21,6 @@ import FakeTitleBar from '../shared/fake-title-bar';
 import EnhancedMenu from '../shared/enhanced-menu';
 
 import { open as openDialogAbout } from '../../state/dialogs/about/actions';
-import { open as openDialogPreferences } from '../../state/dialogs/preferences/actions';
 import { open as openDialogCreateCustomApp } from '../../state/dialogs/create-custom-app/actions';
 import {
   changeRoute,
@@ -77,7 +76,6 @@ class EnhancedAppBar extends React.Component {
       classes,
       onChangeRoute,
       onOpenDialogAbout,
-      onOpenDialogPreferences,
       onOpenDialogCreateCustomApp,
       route,
     } = this.props;
@@ -116,15 +114,7 @@ class EnhancedAppBar extends React.Component {
                 </Tooltip>
               )}
             >
-              {window.platform !== 'win32' && (
-                <ListItem button onClick={onOpenDialogPreferences}>
-                  <ListItemIcon>
-                    <SettingsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={STRING_PREFERENCES} />
-                </ListItem>
-              )}
-              <ListItem button onClick={() => requestOpenInBrowser('https://webcatalog.io/help')}>
+              <ListItem button onClick={() => requestOpenInBrowser('https://github.com/quanglam2807/appifier/issues')}>
                 <ListItemIcon>
                   <HelpIcon />
                 </ListItemIcon>
@@ -149,7 +139,6 @@ EnhancedAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   onChangeRoute: PropTypes.func.isRequired,
   onOpenDialogAbout: PropTypes.func.isRequired,
-  onOpenDialogPreferences: PropTypes.func.isRequired,
   onOpenDialogCreateCustomApp: PropTypes.func.isRequired,
   route: PropTypes.string.isRequired,
 };
@@ -161,7 +150,6 @@ const mapStateToProps = state => ({
 const actionCreators = {
   changeRoute,
   openDialogAbout,
-  openDialogPreferences,
   openDialogCreateCustomApp,
 };
 

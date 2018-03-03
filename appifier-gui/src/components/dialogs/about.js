@@ -24,9 +24,6 @@ import {
   STRING_CHECK_FOR_UPDATES,
   STRING_CHECKING_FOR_UPDATES,
   STRING_GO_TO_THE_WEBSITE,
-  STRING_PRIVACY_POLICY,
-  STRING_RELEASE_NOTES,
-  STRING_TERMS,
   STRING_UPDATE_AVAILABLE,
   STRING_UPDATE_ERROR,
   STRING_UPDATE_NOT_AVAILABLE,
@@ -124,8 +121,8 @@ const About = (props) => {
         {STRING_ABOUT}
       </EnhancedDialogTitle>
       <DialogContent className={classes.dialogContent}>
-        <img src={iconSvg} alt="WebCatalog" className={classes.icon} />
-        <Typography type="title" className={classes.title}>WebCatalog</Typography>
+        <img src={iconSvg} alt="Appifier" className={classes.icon} />
+        <Typography type="title" className={classes.title}>Appifier</Typography>
         <Typography type="body1" className={classes.version}>Version {window.version}</Typography>
 
         <Typography type="body1" className={classes.updaterStatus}>
@@ -139,7 +136,7 @@ const About = (props) => {
 
         {updaterStatus === UPDATE_AVAILABLE && (
           <Button
-            onClick={() => requestOpenInBrowser('https://webcatalog.io')}
+            onClick={() => requestOpenInBrowser('https://quang.im/appifier')}
             className={classes.goToTheWebsiteButton}
             raised
           >
@@ -169,28 +166,9 @@ const About = (props) => {
         </div>
 
         <Button
-          onClick={() => requestOpenInBrowser('https://webcatalog.io')}
+          onClick={() => requestOpenInBrowser('https://quang.im/appifier')}
         >
           {STRING_WEBSITE}
-        </Button>
-
-        <Button
-          onClick={() => requestOpenInBrowser('https://webcatalog.io/release-notes')}
-        >
-          {STRING_RELEASE_NOTES}
-        </Button>
-        <br />
-
-        <Button
-          onClick={() => requestOpenInBrowser('https://webcatalog.io/terms')}
-        >
-          {STRING_TERMS}
-        </Button>
-
-        <Button
-          onClick={() => requestOpenInBrowser('https://webcatalog.io/privacy')}
-        >
-          {STRING_PRIVACY_POLICY}
         </Button>
 
         <Typography type="body1" className={classes.madeBy}>

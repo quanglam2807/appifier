@@ -1,14 +1,9 @@
-import semver from 'semver';
-
 import {
   localAppSet,
   localAppRemove,
 } from './action-creators';
 
 import { openSnackbar } from '../snackbar/actions';
-import { open as openUpdateMainAppFirstDialog } from '../../dialogs/update-main-app-first/actions';
-
-import { getVersion } from '../../root/version/actions';
 
 import installAppAsync from '../../../helpers/install-app-async';
 
@@ -54,22 +49,9 @@ export const updateApp = id =>
 
     if (managedApp.status !== 'INSTALLED') return null;
 
-    return Promise.resolve()
-      .then(() => {
-        dispatch(setLocalApp(id, 'INSTALLING', managedApp.app));
+    dispatch(setLocalApp(id, 'INSTALLING', managedApp.app));
 
-        return dispatch(getVersion());
-      })
-      .then(() => {
-        const latestVersion = getState().version.apiData.version;
-        const localVersion = window.version;
-        if (semver.gt(latestVersion, localVersion)) {
-          dispatch(setLocalApp(id, 'INSTALLED', managedApp.app));
-          return dispatch(openUpdateMainAppFirstDialog());
-        }
-
-        return installAppAsync(managedApp.app);
-      })
+    return installAppAsync(managedApp.app)
       .catch((err) => {
         dispatch(setLocalApp(id, 'INSTALLED', managedApp.app));
         dispatch(openSnackbar(STRING_FAILED_TO_UPDATE.replace('{name}', managedApp.app.name)));
