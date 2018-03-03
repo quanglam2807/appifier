@@ -11,6 +11,11 @@ matrix:
     - CC=clang CXX=clang++ npm_config_clang=1
     compiler: clang
 cache: yarn
+addons:
+  apt:
+    packages:
+    - rpm
+    - bsdtar
 before_script:
 - yarn lint
 script:
