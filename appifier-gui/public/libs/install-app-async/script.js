@@ -10,9 +10,7 @@ const {
   homePath,
   icon,
   id,
-  moleculeVersion,
   name,
-  shareResources,
   tempPath,
   url,
 } = argv;

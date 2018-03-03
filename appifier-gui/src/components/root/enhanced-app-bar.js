@@ -10,7 +10,6 @@ import HelpIcon from 'material-ui-icons/Help';
 import IconButton from 'material-ui/IconButton';
 import InfoIcon from 'material-ui-icons/Info';
 import MoreVertIcon from 'material-ui-icons/MoreVert';
-import SettingsIcon from 'material-ui-icons/Settings';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Toolbar from 'material-ui/Toolbar';
 import Tooltip from 'material-ui/Tooltip';
@@ -38,7 +37,6 @@ import {
   STRING_HELP,
   STRING_INSTALLED_APPS,
   STRING_MORE,
-  STRING_PREFERENCES,
 } from '../../constants/strings';
 
 import { requestScanInstalledApps } from '../../senders/local';
